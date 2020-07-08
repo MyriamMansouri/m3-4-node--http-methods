@@ -40,7 +40,7 @@ const handleToggleErrorMessage = (errorStatus) => {};
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  console.log(size.value);
+
   submitButton.disabled = true;
 
   const data = {
@@ -48,7 +48,7 @@ const handleSubmit = (event) => {
     size: size.value,
     givenName: givenName.value,
     surname: surname.value,
-    email: email,
+    email: email.value,
     address: address.value,
     city: city.value,
     province: province.value,
@@ -66,7 +66,7 @@ const handleSubmit = (event) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      const { status, error } = data;
+      const { status, error, customer } = data;
       if (status === 'success') {
         window.location.href = '/order-confirmed';
       } else if (error) {
